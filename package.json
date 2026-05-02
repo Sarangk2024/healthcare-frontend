@@ -1,6 +1,7 @@
 {
   "name": "healthcare-frontend",
   "version": "0.1.0",
+  "homepage": "https://sarangk2024.github.io/healthcare-frontend/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
