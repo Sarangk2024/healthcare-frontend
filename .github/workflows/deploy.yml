@@ -28,16 +28,21 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci
 
       - name: Build
         run: npm run build
+        env:
+          PUBLIC_URL: /healthcare-frontend
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: ./build
 
   deploy:
     environment:
