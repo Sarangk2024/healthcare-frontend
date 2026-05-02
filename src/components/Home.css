@@ -1,0 +1,52 @@
+/* src/components/Home.css */
+
+/* Doctor Cards Section */
+.doctors-section {
+    background-color: #2e343e;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #61dafb;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.doctor-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.doctor-card {
+    background-color: #3b424d;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.doctor-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #61dafb;
+}
+
+.doctor-card h3 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.doctor-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
