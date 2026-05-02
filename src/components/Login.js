@@ -1,9 +1,10 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-const Login = ({ setIsLoggedIn }) => {
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
+
+const Login = ({ onLogin }) => {
     const [user, setUser] = useState({
         username: '',
         password: ''
@@ -18,9 +19,9 @@ const Login = ({ setIsLoggedIn }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/auth/login', user);
-            setIsLoggedIn(true); // Set the login state to true
-            navigate('/'); // Redirect to the home page
+            await axios.post(`${API_BASE_URL}/auth/login`, user);
+            onLogin();
+            navigate('/');
         } catch (error) {
             setMessage('Login failed. Invalid username or password.');
             console.error('Login error!', error);
@@ -29,14 +30,15 @@ const Login = ({ setIsLoggedIn }) => {
 
     return (
         <div className="auth-form-container">
-            <h2>Login</h2>
+            <p className="eyebrow">Patient portal</p>
+            <h2>Welcome back</h2>
             <form onSubmit={handleSubmit} className="login-form">
                 <label htmlFor="username">Username</label>
                 <input
                     value={user.username}
                     onChange={handleChange}
                     type="text"
-                    placeholder="username"
+                    placeholder="Enter your username"
                     id="username"
                     name="username"
                     required
@@ -46,12 +48,12 @@ const Login = ({ setIsLoggedIn }) => {
                     value={user.password}
                     onChange={handleChange}
                     type="password"
-                    placeholder="password"
+                    placeholder="Enter your password"
                     id="password"
                     name="password"
                     required
                 />
-                <button type="submit">Log In</button>
+                <button type="submit">Log in securely</button>
             </form>
             {message && <p className="message">{message}</p>}
             <Link to="/register" className="form-switch-button">

@@ -1,23 +1,89 @@
-/* src/components/Navbar.css */
 .navbar {
-  background-color: #333;
-  padding: 1rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-brand {
+  align-items: center;
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 1.1rem;
+  font-weight: 800;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  align-items: center;
+  background: var(--primary);
+  border-radius: 8px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 34px;
+  justify-content: center;
+  width: 34px;
 }
 
 .nav-links {
-  list-style: none;
+  align-items: center;
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav-links li a {
-  color: white;
+.nav-links a,
+.nav-logout {
+  align-items: center;
+  background: transparent;
+  border-radius: 8px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.96rem;
+  font-weight: 700;
+  min-height: 42px;
+  padding: 10px 14px;
   text-decoration: none;
-  font-size: 1.2rem;
 }
 
-.nav-links li a:hover {
-  color: #61dafb;
+.nav-links a:hover,
+.nav-links a.active,
+.nav-logout:hover {
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+}
+
+.nav-links .nav-cta {
+  background: var(--primary);
+  color: #fff;
+}
+
+.nav-links .nav-cta:hover,
+.nav-links .nav-cta.active {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+@media (max-width: 620px) {
+  .navbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }

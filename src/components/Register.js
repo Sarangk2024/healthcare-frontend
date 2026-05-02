@@ -1,7 +1,8 @@
-// src/components/Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -18,9 +19,9 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/auth/register', user);
+            await axios.post(`${API_BASE_URL}/auth/register`, user);
             setMessage('Registration successful! Redirecting to login...');
-            navigate('/login'); // Redirect to the login page
+            setTimeout(() => navigate('/login'), 600);
         } catch (error) {
             setMessage('Registration failed. Please try a different username.');
             console.error('Registration error!', error);
@@ -29,14 +30,15 @@ const Register = () => {
 
     return (
         <div className="auth-form-container">
-            <h2>Register</h2>
+            <p className="eyebrow">Create account</p>
+            <h2>Start your care profile</h2>
             <form onSubmit={handleSubmit} className="register-form">
                 <label htmlFor="username">Username</label>
                 <input
                     value={user.username}
                     onChange={handleChange}
                     type="text"
-                    placeholder="username"
+                    placeholder="Choose a username"
                     id="username"
                     name="username"
                     required
@@ -46,12 +48,12 @@ const Register = () => {
                     value={user.password}
                     onChange={handleChange}
                     type="password"
-                    placeholder="password"
+                    placeholder="Choose a password"
                     id="password"
                     name="password"
                     required
                 />
-                <button type="submit">Register</button>
+                <button type="submit">Create account</button>
             </form>
             {message && <p className="message">{message}</p>}
             <Link to="/login" className="form-switch-button">

@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Healthcare Full-Stack App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository now contains both the React frontend and the Spring Boot backend.
 
-## Available Scripts
+## Run The Frontend
 
-In the project directory, you can run:
+```bash
+npm install
+npm start
+```
 
-### `npm start`
+The React app runs at `http://localhost:3000`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run The Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+From the project root:
 
-### `npm test`
+```bash
+npm run backend
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+On Windows Git Bash, Command Prompt, or PowerShell:
 
-### `npm run build`
+```bash
+npm run backend:win
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The API runs at `http://localhost:8080/api`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The default backend scripts use a local H2 development database so the app runs without SQL Server setup. To run with the SQL Server settings in `application.properties`, use:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run backend:sqlserver
+```
 
-### `npm run eject`
+## Configuration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The frontend uses `http://localhost:8080/api` by default. To point it at another backend, create `.env` in the project root:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+REACT_APP_API_BASE_URL=http://localhost:8080/api
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The SQL Server database connection is configured in `healthcare-backend/src/main/resources/application.properties`. The development database is configured in `healthcare-backend/src/main/resources/application-dev.properties`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Main Features
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Patient registration and login
+- Persistent frontend login state
+- Professional responsive home page
+- Doctor search and specialty filtering
+- Appointment booking with backend integration
+- Local doctor fallback if the backend is temporarily unavailable
+- Recent appointment request list when the backend is running

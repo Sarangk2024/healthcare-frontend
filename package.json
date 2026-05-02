@@ -16,6 +16,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "backend": "cd healthcare-backend && ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev",
+    "backend:win": "cd healthcare-backend && mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=dev",
+    "backend:sqlserver": "cd healthcare-backend && mvnw.cmd spring-boot:run",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
